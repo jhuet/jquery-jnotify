@@ -22,6 +22,20 @@
     </script>
 </head>
 <body>
-
+    <p>Double click on notifications to remove them all.</p>
+    <p>Here's the code showing up the notifications you see right now once you loaded jQuery and the plugin.</p>
+    <pre>
+    $.notify('setting up error preset as default preset', 'info', {timeout: 0});
+    $.notify('defaultPreset', 'error');
+    $.notify('Message with default error preset', {timeout: 0});
+    $.notify('removing error preset', 'info', {timeout: 0});
+    $.notify('removePreset', 'error');
+    $.notify('Info message as default backup preset', {timeout: 0});
+    $.notify('Success message staying forever', 'success', {timeout: 0});
+    $.notify('adding new preset looking like success but staying 5 secs', 'info', {timeout: 0});
+    $.notify('addPreset', 'long-success', {timeout: 5, css: 'success'});
+    $.notify('Success message with new preset staying 5 secs.', 'long-success');
+    $.notify('Warning message', 'warning', {timeout: 0});
+    </pre>
 </body>
 </html>
