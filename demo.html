@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xml:lang="fr" lang="fr">
+<head>
+    <title>$.notify() Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <link type="text/css" href="./jquery.notify.css" rel="stylesheet" />
+    <script type="text/javascript" src="./jquery.notify.js"></script>
+    <script type="text/javascript">
+    $(function() {
+
+        $('#notify-action').click(function() {
+            var preset = $('#notify-preset').val() != '-1' ? $('#notify-preset').val() : null;
+            var options = getNotifyOptions($('#notify'));
+            if (preset) {
+                $.notify($('#notify-message').val(), preset, options);
+            } else {
+                $.notify($('#notify-message').val(), options);
+            }
+            log('$.notify("' + $('#notify-message').val() + '"' + (preset ? (', "' + preset + '"') : '') + (! $.isEmptyObject(options) ? ', ' + objectToString(options) : '') + ');');
+        } );
+        
+        $('#default-preset-action').click(function() {
+            var presetName = undefined;
+            if (presetName = $('#default-preset-name').val()) {
+                $.notify('defaultPreset', presetName);
+                log('$.notify("defaultPreset", "' + presetName + '");');
+            }
+        } );
+        
+        $('#add-preset-action').click(function() {
+            var presetName = undefined;
+            if (presetName = $('#add-preset-name').val()) {
+                var options = getNotifyOptions($('#add-preset'));
+                $.notify('addPreset', presetName, options);
+                if (!presets[presetName]) {
+                    presets[presetName] = presetName;
+                    updatePresetSelects();
+                }
+                log('$.notify("addPreset", "' + presetName + '", ' + objectToString(options) + ');');
+            }
+        } );
+        
+        $('#remove-preset-action').click(function() {
+            var presetName = undefined;
+            if (presetName = $('#remove-preset-name').val()) {
+                $.notify('removePreset', presetName);
+                if (presets[presetName]) {
+                    delete presets[presetName];
+                    updatePresetSelects();
+                }
+                log('$.notify("removePreset", "' + presetName + '");');
+            }
+        } );
+        
+        updatePresetSelects();
+    } );
+
+    var presets = {info: 'info', success: 'success', warning: 'warning', error: 'error'};
+    
+    var updatePresetSelects = function() {
+        $('#notify-preset, #remove-preset-name, #default-preset-name').each(function() {
+            var $this = $(this);
+
+            var options = [];
+            $.each(presets, function(id, preset) {
+                options.push($('<option />').val(preset).text(preset));
+            } );
+
+            if (this.id == 'notify-preset') {
+                options = $.merge([
+                    $('<option />').val('-1').text('default'),
+                ], options);
+            }
+
+            $this.find('option').remove();
+
+            $.each(options, function(id, $option) {
+                $this.append($option);
+            } );
+        } );
+    };
+    
+    var getNotifyOptions = function($action) {
+        var options = {};
+        $action.find('.option').each(function() {
+            var $this = $(this);
+            if ($this.val()) {
+                options[$this.attr('name')] = $this.val();
+            }
+        } );
+        return options;
+    };
+
+    var objectToString = function(obj) {
+        var arr = [];
+        $.each(obj, function(key, val) {
+            var next = key + ': ';
+            next += $.isPlainObject(val) ? printObj(val) : '"' + val + '"';
+            arr.push( next );
+        } );
+        return '{' +  arr.join(', ') + '}';
+    };
+    
+    var log = function(message) {
+        if (console) {
+            console.log(message);
+        }
+    };
+    </script>
+    <style type="text/css">
+        h1 {
+            text-align: center;
+        }
+        body {
+            font: 11px Verdana, Arial, sans-serif;
+            margin: 0 auto;
+            width: 700px;
+        }
+        .action {
+            border: 1px solid black;
+            padding: 5px;
+            margin-bottom: -1px;
+        }
+        .action .message {
+            font-weight: bold;
+        }
+        .action .description {
+            color: #777;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://github.com/jhuet/jquery-notify"><img alt="Fork me on GitHub" src="https://assets2.github.com/img/4c7dc970b89fd04b81c8e221ba88ff99a06c6b61?repo=&amp;url=http%3A%2F%2Fs3.amazonaws.com%2Fgithub%2Fribbons%2Fforkme_right_white_ffffff.png&amp;path=" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+    <h1>$.notify() Demo</h1>
+    <div class="action" id="notify">
+        <p class="message">Display this message as a notify :</p>
+        <p><label>Message :</label> <input id="notify-message" type="text" value="nice notification !" /></p>
+        <p class="message">With</p>
+        <p><label for="notify-preset">That preset :</label><select id="notify-preset"></select></p>
+        <p class="message">And / or specific informations <span class="description">that will override preset ones</span></p>
+        <p><label for="notify-timeout">Timeout :</label> <input id="notify-timeout" name="timeout" class="option" type="text" /> <span class="description">time in seconds after wich the notify will disapear ; 0 to make it stay</span></p>
+        <p><label for="notify-css">CSS class :</label> <input id="notify-css" name="css" class="option" type="text" /> <span class="description">be sure to have a '.notify-'+css class set (ie: .notify-info, .notify-error...)</span></p>
+        <p><input id="notify-action" type="button" value="Display" /></p>
+    </div>
+
+    <div class="action" id="default-preset">
+        <p class="message">Set as default preset :</p>
+        <p><label for="default-preset-name">Name :</label> <select id="default-preset-name"></select></p>
+        <p><input id="default-preset-action" type="button" value="Set" /></p>
+    </div>
+
+    <div class="action" id="add-preset">
+        <p class="message">Add a new preset :</p>
+        <p><label for="add-preset-name">Name :</label> <input id="add-preset-name" type="text" /></p>
+        <p><label for="add-preset-timeout">Timeout :</label> <input id="add-preset-timeout" name="timeout" class="option" type="text" /> <span class="description">time in seconds after wich the notify will disapear ; 0 to make it stay</span></p>
+        <p><label for="add-preset-type">Type :</label> <input id="add-preset-type" name="type" class="option" type="text" /> <span class="description">may be anything having a meaning for you ; if not set will use the name of the preset</span></p>
+        <p><label for="add-preset-css">CSS class :</label> <input id="add-preset-css" name="css" class="option" type="text" /> <span class="description">be sure to have a '.notify-'+css class set ; if not set, uses type value</span></p>
+        <p><input id="add-preset-action" type="button" value="Add" /></p>
+    </div>
+
+    <div class="action" id="remove-preset">
+        <p class="message">Remove a preset :</p>
+        <p><label for="remove-preset-name">Name :</label> <select id="remove-preset-name"></select></p>
+        <p><input id="remove-preset-action" type="button" value="Remove" /></p>
+    </div>
+    <p>If you want to see the commands executed on every actions, open your console (firebug, chrome...).</p>
+</body>
+</html>
