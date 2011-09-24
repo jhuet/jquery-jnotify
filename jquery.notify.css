@@ -6,10 +6,12 @@
     text-align: center;
     width: 50%;
     font-size: 12px;
+    opacity: 0.9;
+    filter: alpha(opacity=90); /* For IE8 and earlier */
 }
 
 .notify {
-    font: 11px "Trebuchet MS",Tahoma,Verdana,Arial,sans-serif;
+    font: 11px "Trebuchet MS", Tahoma, Verdana, Arial, sans-serif;
     text-align: left;
     border: #000000 1px solid;
     padding: 4px;
@@ -26,8 +28,8 @@
     height: 16px;
     width: 16px;
     float: right;
-    opacity: 0.3;
-    filter: alpha(opacity=30);
+    opacity: 0.4;
+    filter: alpha(opacity=40);
     background-position: top right;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAOwwAADsMBx2+oZAAAABl0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuODc7gF0AAAHASURBVDhPlVPXisJQEJWFhcv+xD4v+YcFv8KCiIgiChp7QWwP9o69YQUX/MXI2ZkLuhuSPBi4ZCBzypy5sdlefPr9/oclZLfbfdJRrBoIrLTbbbVer38behh8OByw3++xWq0MJL1eTxkMBphMJqjVaj/lcvnrSfIAXy4X8NlsNphOp0+SbrerkDoWiwXO5zO4LhQKaiaTeZMkRCAIdD8ej7jdbmAnRABSVDqdjkLqmM/nOJ1O4JrAGoHfdWOQbUFNGpHher1iu91iOByC1DGbzcDkXOfzeS2dTgvTnGg+MRqNNLbKo7AiAzkXcoJcLmcNfjCSRdFqteQ4bJeB7Cqbzd5TqZS58n87BOZVSVWq0Ww2sV6veW7EYjHLFUsOalYYNB6PZQa8DcoGy+UStHskk0mEQiFzkkajIcGUgQSyMoWlxePxe6VSkVupVquIRCLw+Xx6EmJXGMCps10ie4BFNBoV4XBYo/Sls2KxiGAwCLfb/UdCN8vOFvmm8ZvC0lRVfQYWCASE3+/nDaBUKvEYcDqddt0qKSQ7f6Q57xSWIW2v1ys8Ho9mCn4wJRIJO1u2+plcLpdwOBx65Rf/ZkP7L6S1P2NS3cqVAAAAAElFTkSuQmCC);
 }
