@@ -1,13 +1,14 @@
 #notify-stack {
-    margin: 5px 20% 0 20%;
-    position: absolute;
+    margin: 5px 20% 0 25%;
+    position: fixed;
     top: 0;
     left: 0;
     text-align: center;
     width: 50%;
     font-size: 12px;
     opacity: 0.9;
-    filter: alpha(opacity=90); /* For IE8 and earlier */
+    filter: alpha(opacity=90);
+    z-index: 10000;
 }
 
 .notify {
@@ -22,6 +23,7 @@
     -webkit-border-radius: 8px;
     background: none 3px 5px no-repeat;
     cursor: pointer;
+    z-index: 10001;
 }
 
 .notify .close {
