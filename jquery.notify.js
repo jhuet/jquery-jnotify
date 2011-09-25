@@ -158,6 +158,8 @@
                 if (statics.defaultPreset == preset) {
                     methods.setDefaultPreset('info');
                 }
+            } else {
+                $.error('"info" preset is not allowed to be removed.');
             }
         },
 
