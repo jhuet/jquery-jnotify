@@ -150,7 +150,9 @@
          * @todo
          */
         updatePreset: function(preset, options) {
-
+            if (statics.presets[preset]) {
+                methods.addPreset(preset, $.extend(statics.presets[preset], options));
+            }
         },
 
         removePreset: function(preset) {
