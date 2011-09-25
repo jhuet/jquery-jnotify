@@ -147,19 +147,44 @@
             }
         },
 
+        /**
+         * @todo
+         */
+        updatePreset: function(preset, options) {
+
+        },
+
         removePreset: function(preset) {
             if (statics.presets[preset] && preset != 'info') {
                 delete statics.presets[preset];
                 if (statics.defaultPreset == preset) {
-                    methods.defaultPreset('info');
+                    methods.setDefaultPreset('info');
                 }
             }
         },
 
-        defaultPreset: function(preset) {
+        getPreset: function(preset) {
+            if (statics.presets[preset]) {
+                return statics.presets[preset];
+            }
+        },
+
+        getPresets: function() {
+            return statics.presets;
+        },
+
+        setDefaultPreset: function(preset) {
             if (statics.presets[preset]) {
                 statics.defaultPreset = preset;
             }
+        },
+
+        getDefaultPreset: function() {
+            return methods.getPreset(statics.defaultPreset);
+        },
+
+        getDefaultPresetName: function() {
+            return statics.defaultPreset;
         }
     };
 
