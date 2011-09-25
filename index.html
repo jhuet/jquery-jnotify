@@ -15,7 +15,6 @@
             } else {
                 $.notify($('#notify-message').val(), options);
             }
-            $('#notify .option').val('');
             log('$.notify("' + $('#notify-message').val() + '"' + (preset ? (', "' + preset + '"') : '') + (! $.isEmptyObject(options) ? ', ' + objectToString(options) : '') + ');');
         } );
 
@@ -162,7 +161,7 @@
     <h1>$.notify() Demo</h1>
     <div class="action" id="notify">
         <p class="message">Display this message as a notify :</p>
-        <p><label>Message :</label> <input id="notify-message" type="text" value="nice notification !" /></p>
+        <p><label for="notify-message" >Message :</label> <input id="notify-message" type="text" value="zOMG notify is nice!" style="width:600px" /></p>
         <p class="message">With</p>
         <p><label for="notify-preset">That preset :</label> <select id="notify-preset"></select> <span class="description"></span></p>
         <p class="message">And / or specific informations <span class="description">that will override preset ones</span></p>
