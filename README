@@ -7,8 +7,9 @@ them all disapear by double clicking on any of them.
 It's possible to create presets of notifications so that when you specify a
 special type of message $.notify('message', 'error'), it will automatically
 use the set parameters for that preset type (for ex. timeout of 5 secs,
-'mega-error' css class etc.). You may add or remove presets with :
-$.notify('addPreset', 'error', {timeout: 5, type: 'error', css: 'mega-error'});
+'mega-error' css class etc.). You may add, update or remove presets with :
+$.notify('addPreset', 'error', {timeout: 5, type: 'error', css: 'error'});
+$.notify('updatePreset', 'error', {timeout: 10, css: 'huge-error'}); // wich will make it be {timeout: 10, type: 'error', css: 'huge-error'}
 $.notify('removePreset', 'error');
 
 default options are : {
