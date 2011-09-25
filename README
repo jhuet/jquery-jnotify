@@ -18,13 +18,13 @@ default options are : {
 }
 
 You may also change the default preset used if no preset is specified with :
-$.notify('defaultPreset', 'success');
+$.notify('setDefaultPreset', 'success');
 Just make sure to have that preset 1st before setting it as default or it'll go back to 'info'.
 
 Different ways to use $.notify :
 $.notify('This is a sweet info message!'); // creates a notification with default preset ('info' by default)
 $.notify('This is a sweet success message!', 'success'); // creates a notification with 'success' preset ;
-                                                         // if that preset does not exit, take default preset but still use the 'success' css class
+                                                         // if that preset does not exit, takes default preset but still use the 'success' css class
                                                          // so you don't have to always create a preset if default behavior works for you
 $.notify('This is a sweet long info message!', {timeout: 50}); // creates a notification with default preset but a timeout of 50 seconds
 $.notify('This is a sweet quick success message!', 'success', {timeout: 0.5}); // creates a notification with 'success' preset but a timeout of 0.5 seconds

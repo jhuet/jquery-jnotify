@@ -19,7 +19,7 @@
  * }
  *
  * You may also change the default preset used if no preset is specified with :
- * $.notify('defaultPreset', 'success');
+ * $.notify('setDefaultPreset', 'success');
  * Just make sure to have that preset 1st before setting it as default or it'll go back to 'info'.
  *
  * Different ways to use $.notify :
@@ -94,8 +94,7 @@
 
             // Retreive the stack, create it if it isn't yet
             var $stack = $('body').find('#notify-stack');
-            if ($stack.length == 0)
-            {
+            if ($stack.length == 0) {
                 $stack = $('<div />');
 
                 $stack.dblclick(function() {
