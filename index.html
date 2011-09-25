@@ -7,7 +7,6 @@
     <script type="text/javascript" src="https://raw.github.com/jhuet/jquery-notify/master/jquery.notify.js"></script>
     <script type="text/javascript">
     $(function() {
-
         $('#notify-action').click(function() {
             var preset = $('#notify-preset').val() != '-1' ? $('#notify-preset').val() : null;
             var options = getOptionsForNotify($('#notify'));
@@ -16,6 +15,7 @@
             } else {
                 $.notify($('#notify-message').val(), options);
             }
+            $('#notify .option').val('');
             log('$.notify("' + $('#notify-message').val() + '"' + (preset ? (', "' + preset + '"') : '') + (! $.isEmptyObject(options) ? ', ' + objectToString(options) : '') + ');');
         } );
 
@@ -33,9 +33,20 @@
             if (presetName = $('#add-preset-name').val()) {
                 var options = getOptionsForNotify($('#add-preset'));
                 $.notify('addPreset', presetName, options);
-                presets = $.notify('getPresets');
                 updatePresetSelects();
+                $('#add-preset .option, #add-preset-name').val('');
                 log('$.notify("addPreset", "' + presetName + '", ' + objectToString(options) + ');');
+            }
+        } );
+
+        $('#update-preset-action').click(function() {
+            var presetName = undefined;
+            if (presetName = $('#update-preset-name').val()) {
+                var options = getOptionsForNotify($('#update-preset'));
+                $.notify('updatePreset', presetName, options);
+                updatePresetSelects();
+                $('#update-preset .option').val('');
+                log('$.notify("updatePreset", "' + presetName + '", ' + objectToString(options) + ');');
             }
         } );
 
@@ -43,13 +54,12 @@
             var presetName = undefined;
             if (presetName = $('#remove-preset-name').val()) {
                 $.notify('removePreset', presetName);
-                presets = $.notify('getPresets');
                 updatePresetSelects();
                 log('$.notify("removePreset", "' + presetName + '");');
             }
         } );
 
-        $('#notify-preset, #remove-preset-name, #default-preset-name').change(function() {
+        $('#notify-preset, #update-preset-name, #remove-preset-name, #default-preset-name').change(function() {
             var $this = $(this);
             var preset = undefined;
             var presetName = undefined;
@@ -68,10 +78,12 @@
         updatePresetSelects();
     } );
 
-    var presets = $.notify('getPresets');
+    var presets = {};
 
     var updatePresetSelects = function() {
-        $('#notify-preset, #remove-preset-name, #default-preset-name').each(function() {
+        presets = $.notify('getPresets');
+
+        $('#notify-preset, #update-preset-name, #remove-preset-name, #default-preset-name').each(function() {
             var $this = $(this);
 
             var options = [];
@@ -172,6 +184,15 @@
         <p><label for="add-preset-type">Type :</label> <input id="add-preset-type" name="type" class="option" type="text" /> <span class="description">may be anything having a meaning for you ; if not set will use the name of the preset</span></p>
         <p><label for="add-preset-css">CSS class :</label> <input id="add-preset-css" name="css" class="option" type="text" /> <span class="description">be sure to have a '.notify-'+css class set ; if not set, uses type value</span></p>
         <p><input id="add-preset-action" type="button" value="Add" /></p>
+    </div>
+
+    <div class="action" id="update-preset">
+        <p class="message">Update a preset :</p>
+        <p><label for="update-preset-name">Name :</label> <select id="update-preset-name"></select> <span class="description"></span></p>
+        <p><label for="update-preset-timeout">Timeout :</label> <input id="update-preset-timeout" name="timeout" class="option" type="text" /> <span class="description">time in seconds after wich the notify will disapear ; 0 to make it stay</span></p>
+        <p><label for="update-preset-type">Type :</label> <input id="update-preset-type" name="type" class="option" type="text" /> <span class="description">may be anything having a meaning for you ; if not set will use the name of the preset</span></p>
+        <p><label for="update-preset-css">CSS class :</label> <input id="update-preset-css" name="css" class="option" type="text" /> <span class="description">be sure to have a '.notify-'+css class set ; if not set, uses type value</span></p>
+        <p><input id="update-preset-action" type="button" value="Update" /></p>
     </div>
 
     <div class="action" id="remove-preset">
