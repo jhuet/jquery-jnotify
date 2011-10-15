@@ -20,14 +20,14 @@
  *
  * You may also change the default preset used if no preset is specified with :
  * $.notify('setDefaultPreset', 'success');
- * Just make sure to have that preset 1st before setting it as default or it'll go back to 'info'.
+ * Just make sure to have that preset 1st before setting it as default or it'll go back to 'notice'.
  *
  * Different ways to use $.notify :
- * $.notify('This is a sweet info message!'); > creates a notification with default preset
+ * $.notify('This is a sweet notice message!'); > creates a notification with default preset
  * $.notify('This is a sweet success message!', 'success'); > creates a notification with 'success' preset ;
  *                                                            if that preset does not exit, take default preset but still use the 'success' css class ;
  *                                                            so you don't have to always create a preset if default behavior works for you
- * $.notify('This is a sweet long info message!', {timeout: 50}); > creates a notification with default preset but a timeout of 50 seconds
+ * $.notify('This is a sweet long notice message!', {timeout: 50}); > creates a notification with default preset but a timeout of 50 seconds
  * $.notify('This is a sweet quick success message!', 'success', {timeout: 0.5}); > creates a notification with 'success' preset but a timeout of 0.5 seconds
  *
  * Notifications themselves may totally be modified to suit your needs by
@@ -40,12 +40,12 @@
 (function($) {
 
     var statics = {
-        defaultPreset : 'info',
+        defaultPreset : 'notice',
 
         presets : {
-            info : { // Do not remove this preset as it's used for the <i>backup</i> default behavior
+            notice : { // Do not remove this preset as it's used for the <i>backup</i> default behavior
                 timeout : 2,
-                type    : 'info',
+                type    : 'notice',
                 css     : null
             },
             success : {
@@ -73,7 +73,7 @@
 
         /**
          * @param string text : Text for the message
-         * @param mixed opts : Either a full set of options such as statics.presets.info ; or the name of a preset or just the name of a css class
+         * @param mixed opts : Either a full set of options such as statics.presets.notice ; or the name of a preset or just the name of a css class
          */
         notify: function(text, opts, optss) {
             var options = $.extend({}, statics.presets[statics.defaultPreset]);
@@ -115,9 +115,9 @@
             $close.hide();
             $notice.mouseenter(function() {
                 $(this).find('.close').show();
-            }).mouseleave(function() {
+            } ).mouseleave(function() {
                 $(this).find('.close').hide();
-            });
+            } );
 
             $notice.prepend($close);
             $stack.append($notice);
@@ -153,13 +153,13 @@
         },
 
         removePreset: function(preset) {
-            if (statics.presets[preset] && preset != 'info') {
+            if (statics.presets[preset] && preset != 'notice') {
                 delete statics.presets[preset];
                 if (statics.defaultPreset == preset) {
-                    methods.setDefaultPreset('info');
+                    methods.setDefaultPreset('notice');
                 }
             } else {
-                $.error('"info" preset is not allowed to be removed.');
+                $.error('"notice" preset is not allowed to be removed.');
             }
         },
 
