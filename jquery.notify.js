@@ -40,6 +40,8 @@
 (function($) {
 
     var statics = {
+        version: '1.1.0',
+
         defaultPreset : 'notice',
 
         presets : {
