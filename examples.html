@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html xml:lang="fr" lang="fr">
 <head>
-    <title>Test $.notify()</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-    <link type="text/css" href="./jquery.notify.css" rel="stylesheet" />
-    <script type="text/javascript" src="./jquery.notify.js"></script>
+    <title>Test $.jnotify()</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <link type="text/css" href="./jquery.jnotify.css" rel="stylesheet" />
+    <script type="text/javascript" src="./jquery.jnotify.js"></script>
     <script type="text/javascript">
     $(function() {
-        $.notify('setting up error preset as default preset', 'info', {timeout: 0});
-        $.notify('defaultPreset', 'error');
-        $.notify('Message with default error preset', {timeout: 0});
-        $.notify('removing error preset', 'info', {timeout: 0});
-        $.notify('removePreset', 'error');
-        $.notify('Info message as default backup preset', {timeout: 0});
-        $.notify('Success message staying forever', 'success', {timeout: 0});
-        $.notify('adding new preset looking like success but staying 5 secs', 'info', {timeout: 0});
-        $.notify('addPreset', 'long-success', {timeout: 5, css: 'success'});
-        $.notify('Success message with new preset staying 5 secs.', 'long-success');
-        $.notify('Warning message', 'warning', {timeout: 0});
+        $.jnotify('setting up error preset as default preset', 'notice', {timeout: 0});
+        $.jnotify('defaultPreset', 'error');
+        $.jnotify('Message with default error preset', {timeout: 0});
+        $.jnotify('removing error preset', 'notice', {timeout: 0});
+        $.jnotify('removePreset', 'error');
+        $.jnotify('Info message as default backup preset', {timeout: 0});
+        $.jnotify('Success message staying forever', 'success', {timeout: 0});
+        $.jnotify('adding new preset looking like success but staying 5 secs', 'notice', {timeout: 0});
+        $.jnotify('addPreset', 'long-success', {timeout: 5, css: 'success'});
+        $.jnotify('Success message with new preset staying 5 secs.', 'long-success');
+        $.jnotify('Warning message', 'warning', {timeout: 0});
     } );
     </script>
 </head>
@@ -25,17 +25,17 @@
     <p>Double click on notifications to remove them all.</p>
     <p>Here's the code showing up the notifications you see right now once you loaded jQuery and the plugin.</p>
     <pre>
-    $.notify('setting up error preset as default preset', 'info', {timeout: 0});
-    $.notify('defaultPreset', 'error');
-    $.notify('Message with default error preset', {timeout: 0});
-    $.notify('removing error preset', 'info', {timeout: 0});
-    $.notify('removePreset', 'error');
-    $.notify('Info message as default backup preset', {timeout: 0});
-    $.notify('Success message staying forever', 'success', {timeout: 0});
-    $.notify('adding new preset looking like success but staying 5 secs', 'info', {timeout: 0});
-    $.notify('addPreset', 'long-success', {timeout: 5, css: 'success'});
-    $.notify('Success message with new preset staying 5 secs.', 'long-success');
-    $.notify('Warning message', 'warning', {timeout: 0});
+        $.jnotify('setting up error preset as default preset', 'notice', {timeout: 0});
+        $.jnotify('defaultPreset', 'error');
+        $.jnotify('Message with default error preset', {timeout: 0});
+        $.jnotify('removing error preset', 'notice', {timeout: 0});
+        $.jnotify('removePreset', 'error');
+        $.jnotify('Info message as default backup preset', {timeout: 0});
+        $.jnotify('Success message staying forever', 'success', {timeout: 0});
+        $.jnotify('adding new preset looking like success but staying 5 secs', 'notice', {timeout: 0});
+        $.jnotify('addPreset', 'long-success', {timeout: 5, css: 'success'});
+        $.jnotify('Success message with new preset staying 5 secs.', 'long-success');
+        $.jnotify('Warning message', 'warning', {timeout: 0});
     </pre>
 </body>
 </html>
