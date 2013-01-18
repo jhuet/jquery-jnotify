@@ -1,0 +1,30 @@
+{
+  "name": "jnotify",
+  "title": "jQuery jnotify",
+  "description": "Yet another jQuery plugin to handle notifications. jnotify allows you to create types of notifications that you can refer to later in your code to easily have consistent error, success... notifications.",
+  "keywords": [
+    "notification",
+    "message",
+    "notify"
+  ],
+  "version": "1.2.0",
+  "author": {
+    "name": "Jérémy Huet",
+    "email": "jeremy.huet+github@gmail.com"
+  },
+  "maintainers": [ {
+    "name": "Jérémy Huet",
+    "email": "jeremy.huet+github@gmail.com"
+  } ],
+  "licenses": [ {
+      "type": "MIT",
+      "url": "https://github.com/stanlemon/jGrowl/blob/master/LICENSE"
+  } ],
+  "bugs": "https://github.com/jhuet/jquery-jnotify/issues",
+  "homepage": "http://jhuet.github.com/jquery-jnotify/",
+  "docs": "https://github.com/jhuet/jquery-jnotify/blob/master/README.md",
+  "download": "https://github.com/jhuet/jquery-jnotify/archive/master.zip",
+  "dependencies": {
+    "jquery": ">=1.5"
+  }
+}
