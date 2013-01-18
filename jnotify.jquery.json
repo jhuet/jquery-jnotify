@@ -18,7 +18,7 @@
   } ],
   "licenses": [ {
       "type": "MIT",
-      "url": "https://github.com/stanlemon/jGrowl/blob/master/LICENSE"
+      "url": "http://www.opensource.org/licenses/MIT"
   } ],
   "bugs": "https://github.com/jhuet/jquery-jnotify/issues",
   "homepage": "http://jhuet.github.com/jquery-jnotify/",
